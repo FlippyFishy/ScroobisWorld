@@ -28,8 +28,9 @@ function drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH){
 function animate(){
     ctx.clearRect(0,0, canvas.width, canvas.height);
     ctx.drawImage(backround, 0, 0, canvas.width, canvas.height);
-    drawSprite(playerSprite, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.x, player.y, 200, 200);
+    drawSprite(playerSprite, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.x, player.y, player.width, player.height);
     movePlayer();
+    handlePLayerFrame();
     requestAnimationFrame(animate);
 }
 animate();
@@ -38,7 +39,7 @@ ctx.clearRect(0,0, canvas.width, canvas.height);
 ctx.drawImage(backround, 0, 0, canvas.width, canvas.height);
 drawSprite(playerSprite, player.width * player.frameX, player.height * player.frameY, player.width, player.height, player.x, player.y, 200, 200);
 movePlayer();
-handlePLayerFrame();
+    handlePlayerFrame();
 }, 60);
 
 window.addEventListener('keydown',  function(e) {
@@ -70,6 +71,8 @@ function movePlayer(){
     player.frameY = 1;
     }
 }
+
+
 function handlePlayerFrame(){
     if (player.frameX < 3 && player.moving) player.frameX++
     else player.frameX = 0;
